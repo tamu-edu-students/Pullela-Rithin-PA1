@@ -4,10 +4,30 @@
 
 def sum(arr)
   # YOUR CODE HERE
+  ans=0
+  for i in arr
+    ans+=i
+  end
+  return ans
 end
 
 def max_2_sum(arr)
   # YOUR CODE HERE
+  m1=0
+  m2=0
+  if(arr.length()==0) 
+    return 0
+  end
+  if(arr.length()==1)
+    return arr[0]
+  end
+  for i in arr
+    if(i>m1)
+      m1=i
+    end
+    
+  end
+
 end
 
 def sum_to_n?(arr, number)
