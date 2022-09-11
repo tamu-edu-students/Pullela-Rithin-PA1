@@ -13,12 +13,19 @@ end
 
 def max_2_sum(arr)
   # YOUR CODE HERE
-  m1=0
-  m2=0
+  if(arr.length()==0) 
+    return 0;
+  end
+  if(arr.length()==1)
+    return arr[0]
+  end
+  m1=-(2**(0.size * 8 -2))
+  m2=-(2**(0.size * 8 -2))
+
   for i in arr
     if(i>m1)
-        m2= m1
-        m1=i
+      m2= m1
+      m1=i
     elsif (i>m2)
       m2=i
     end
@@ -32,7 +39,9 @@ def sum_to_n?(arr, number)
   for i in arr
     if(map[number-i]!=0) 
       return true
-    elsif map[i]+=1;
+    elsif 
+      map[i]+=1;
+    end
   end
   return false;
 end
@@ -41,7 +50,7 @@ end
 
 def hello(name)
   # YOUR CODE HERE
-  return name+"Hello"
+  "Hello, "+name
 end
 
 def starts_with_consonant?(x)
@@ -61,13 +70,7 @@ end
 
 def binary_multiple_of_4?(s)
   # YOUR CODE HERE
-  for c in s
-    if(c!='1' && c!='0')
-      return false;
-    end
-  end
-  num= s.to_i(2)
-  return num%4==0;
+  return (/\A[01]*00\Z|(\A0\Z)/).match?(s)
 end
 
 # Part 3
@@ -75,5 +78,31 @@ end
 # Object representing a book
 class BookInStock
   # YOUR CODE HERE
-  
+  def initialize(isbn, price)
+    raise ArgumentError.new("isbn cannot be empty") if isbn.empty?
+    raise ArgumentError.new("Price should be > 0") if price<=0
+    @isbn= isbn
+    @price= price
+  end
+
+  def isbn
+    @isbn
+  end
+
+  def price
+    @price
+  end
+
+  def isbn=(isbn)
+    @isbn= isbn
+  end
+
+  def price=(price)
+    @price= price
+  end
+
+  def price_as_string()
+    return "$%0.2f" %@price
+  end
+
 end
